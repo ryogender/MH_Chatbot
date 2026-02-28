@@ -32,7 +32,7 @@ def load_empathetic_dialogues() -> list[dict]:
     Extracts conversation pairs (context -> response) with emotion labels.
     """
     logger.info("Loading EmpatheticDialogues dataset...")
-    dataset = load_dataset("empathetic_dialogues", trust_remote_code=True)
+    dataset = load_dataset("empathetic_dialogues")
 
     conversations = []
     for split in ["train", "validation", "test"]:
@@ -85,7 +85,7 @@ def load_go_emotions() -> list[dict]:
     Creates empathetic response templates based on detected emotions.
     """
     logger.info("Loading GoEmotions dataset...")
-    dataset = load_dataset("google-research-datasets/go_emotions", "simplified", trust_remote_code=True)
+    dataset = load_dataset("google-research-datasets/go_emotions", "simplified")
 
     # Emotion label mapping
     emotion_labels = [
@@ -198,7 +198,7 @@ def load_counsel_chat() -> list[dict]:
     """
     logger.info("Loading CounselChat dataset...")
     try:
-        dataset = load_dataset("nbertagnolli/counsel-chat", trust_remote_code=True)
+        dataset = load_dataset("nbertagnolli/counsel-chat")
     except Exception as e:
         logger.warning(f"Could not load CounselChat dataset: {e}")
         logger.info("Continuing without CounselChat data...")
